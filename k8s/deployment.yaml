@@ -10,7 +10,7 @@ spec:
     matchLabels:
       app: simple-web-app
   template:
-    metadata: 
+    metadata:
       labels:
         app: simple-web-app
     spec:
@@ -18,16 +18,16 @@ spec:
       - name: simple-web-app
         image: parthtiwari/simplewebapp
         ports:
-        - containerPort: 3000
+        - containerPort: 3000 
         livenessProbe:
           httpGet:
             path: /
             port: 3000
-          initailDelaySeconds: 3
+          initialDelaySeconds: 3
           periodSeconds: 3
         readinessProbe:
           httpGet:
             path: /
             port: 3000
-          initailDelaySeconds: 3
+          initialDelaySeconds: 3 
           periodSeconds: 3
