@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-web-app
+  labels:
+    app: simple-web-app
+spec:
+  replicas: 3
+  selector:
+    matchlabels:
+      app: simple-web-app
+  template:
+    metadata: 
+      labels:
+        app: simple-web-app
+    spec:
+      containers:
+      - name: simple-web-app
+        image: parthtiwari/simplewebapp
+        ports:
+        - conatinerPort: 3000
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initailDelaySecond: 3
+          periodSeconds: 3
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initailDelaySeconds: 3
+          periodSeconds: 3
